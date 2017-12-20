@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.set 全局操作</title>
+    <script src="../assets/vue.js"></script>
+</head>
+
+<body>
+    <h1>Vue.set 全局操作</h1>
+    <hr>
+    <div id="app">
+        {{num}}
+        <ul>
+            <li v-for="itme in arr">{{itme}}</li>
+        </ul>
+        <p>
+            <button onclick="add()">add</button>
+        </p>
+    </div>
+    <script>
+        var addNum = {
+            num: 1,
+            arr: ["a", "b", "c"],
+        }
+        function add() {
+            Vue.set(addNum, "num", 2);//修改某一个值
+            Vue.set(addNum.arr, 1, "sss");//修改数组某下标的内容
+        }
+        var app = new Vue({
+            el: "#app",
+            data: addNum
+        })
+    </script>
+</body>
+
+</html>
